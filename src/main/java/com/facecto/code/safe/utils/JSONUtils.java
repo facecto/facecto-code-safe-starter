@@ -6,9 +6,9 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/8/8
+ * JSONUtils
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 @Slf4j
 public class JSONUtils {

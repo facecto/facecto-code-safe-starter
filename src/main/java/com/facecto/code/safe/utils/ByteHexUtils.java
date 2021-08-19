@@ -3,9 +3,9 @@ package com.facecto.code.safe.utils;
 import javax.xml.bind.DatatypeConverter;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/5/01
+ * ByteHexUtils
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 public class ByteHexUtils {
 

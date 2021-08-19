@@ -15,9 +15,9 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/5/01
+ * RSAUtils
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 public class RSAUtils {
     static int keySize = 2048;

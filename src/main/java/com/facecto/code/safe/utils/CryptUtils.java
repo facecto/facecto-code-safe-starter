@@ -22,9 +22,9 @@ import static com.facecto.code.safe.utils.JSONUtils.hasJsonString;
 
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/8/8
+ * CryptUtils
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 public class CryptUtils {
 

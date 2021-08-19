@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/8/8
+ * ResponseHandler
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 @EnableConfigurationProperties(SafeProperties.class)
 @ControllerAdvice

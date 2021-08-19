@@ -4,9 +4,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/8/8
+ * SafeAutoConfiguration
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 @Configuration
 @ComponentScan("com.facecto.code.safe")

@@ -6,12 +6,13 @@ import org.apache.http.HttpStatus;
 import java.io.Serializable;
 
 /**
- * @author Jon So
- * @author page https://cto.pub
- * @date 2021/8/8
+ * SafeResult
+ * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @version v1.1.0 (2021/8/08)
  */
 @Data
 public class SafeResult implements Serializable {
+    private static final long serialVersionUID = -3301191414290151056L;
     private Integer code;
     private String message;
     private String sign;
