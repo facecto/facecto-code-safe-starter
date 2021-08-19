@@ -27,7 +27,7 @@ public class RSAUtils {
     /**
      * create keyPair
      *
-     * @return
+     * @return result
      * @throws NoSuchAlgorithmException
      */
     public static KeyPair getKeyPair() throws Exception {
@@ -42,7 +42,7 @@ public class RSAUtils {
      * get privateKey
      *
      * @param keyPair keyPair
-     * @return
+     * @return result
      */
     public static RSAPrivateKey getRSAPrivateKey(KeyPair keyPair) {
         return (RSAPrivateKey) keyPair.getPrivate();
@@ -52,7 +52,7 @@ public class RSAUtils {
      * get privateKey string
      *
      * @param keyPair keyPair
-     * @return
+     * @return result
      */
     public static String getRSAPrivateKeyString(KeyPair keyPair) {
         RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyPair.getPrivate();
@@ -63,7 +63,7 @@ public class RSAUtils {
      * get privateKey
      *
      * @param rsaPrivateKey rsaPrivateKey
-     * @return
+     * @return result
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeySpecException
      */
@@ -76,7 +76,7 @@ public class RSAUtils {
      * get privateKey
      *
      * @param privateString privateString
-     * @return
+     * @return result
      * @throws Exception
      */
     public static PrivateKey getPrivateKey(String privateString) throws Exception {
@@ -90,7 +90,7 @@ public class RSAUtils {
      * get publicKey
      *
      * @param rsaPublicKey rsaPublicKey
-     * @return
+     * @return result
      */
     public static PublicKey getPublicKey(RSAPublicKey rsaPublicKey) throws Exception {
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
@@ -101,7 +101,7 @@ public class RSAUtils {
      * get publicKey
      *
      * @param publicKeyString publicKeyString
-     * @return
+     * @return result
      * @throws Exception
      */
     public static PublicKey getPublicKey(String publicKeyString) throws Exception {
@@ -115,7 +115,7 @@ public class RSAUtils {
      * get RSA
      *
      * @param keyPair keyPair
-     * @return
+     * @return result
      */
     public static RSAPublicKey getRSAPublicKey(KeyPair keyPair) {
         return (RSAPublicKey) keyPair.getPublic();
@@ -125,7 +125,7 @@ public class RSAUtils {
      * get RSA string
      *
      * @param keyPair keyPair
-     * @return
+     * @return result
      */
     public static String getRSAPublicKeyString(KeyPair keyPair) {
         RSAPublicKey rsaPublicKey = (RSAPublicKey) keyPair.getPublic();
@@ -137,7 +137,7 @@ public class RSAUtils {
      *
      * @param source       source
      * @param rsaPublicKey rsaPublicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String encrypt(String source, RSAPublicKey rsaPublicKey) throws Exception {
@@ -151,7 +151,7 @@ public class RSAUtils {
      *
      * @param source    source
      * @param publicKey publicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String encrypt(String source, PublicKey publicKey) throws Exception {
@@ -165,7 +165,7 @@ public class RSAUtils {
      *
      * @param source             source
      * @param rsaPublicKeyString rsaPublicKeyString
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String encrypt(String source, String rsaPublicKeyString) throws Exception {
@@ -181,7 +181,7 @@ public class RSAUtils {
      *
      * @param source     source
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String encrypt(String source, PrivateKey privateKey) throws Exception {
@@ -197,7 +197,7 @@ public class RSAUtils {
      *
      * @param encString  encString
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String decrypt(String encString, PrivateKey privateKey) throws Exception {
@@ -213,7 +213,7 @@ public class RSAUtils {
      *
      * @param encString     encString
      * @param rsaPrivateKey rsaPrivateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String decrypt(String encString, RSAPrivateKey rsaPrivateKey) throws Exception {
@@ -228,7 +228,7 @@ public class RSAUtils {
      *
      * @param encString           encString
      * @param rsaPrivateKeyString rsaPrivateKeyString
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String decrypt(String encString, String rsaPrivateKeyString) throws Exception {
@@ -245,7 +245,7 @@ public class RSAUtils {
      *
      * @param encString encString
      * @param publicKey publicKe
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String decrypt(String encString, PublicKey publicKey) throws Exception {
@@ -260,7 +260,7 @@ public class RSAUtils {
      *
      * @param source        source
      * @param rsaPrivateKey rsaPrivateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String sign(String source, RSAPrivateKey rsaPrivateKey) throws Exception {
@@ -273,7 +273,7 @@ public class RSAUtils {
      *
      * @param source     source
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String sign(String source, PrivateKey privateKey) throws Exception {
@@ -286,7 +286,7 @@ public class RSAUtils {
      *
      * @param source     source
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static byte[] signByte(String source, PrivateKey privateKey) throws Exception {
@@ -303,7 +303,7 @@ public class RSAUtils {
      * @param source       source
      * @param sign         sign
      * @param rsaPublicKey rsaPublicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean verifySign(String source, String sign, RSAPublicKey rsaPublicKey) throws Exception {
@@ -316,7 +316,7 @@ public class RSAUtils {
      * @param source    source
      * @param sign      sign
      * @param publicKey publicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean verifySign(String source, String sign, PublicKey publicKey) throws Exception {
@@ -329,7 +329,7 @@ public class RSAUtils {
      * @param sourceByte sourceByte
      * @param signByte   signByte
      * @param publicKey  publicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean verifySign(byte[] sourceByte, byte[] signByte, PublicKey publicKey) throws Exception {
@@ -344,7 +344,7 @@ public class RSAUtils {
      *
      * @param file       file
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static byte[] signFileByte(File file, PrivateKey privateKey) throws Exception {
@@ -366,7 +366,7 @@ public class RSAUtils {
      *
      * @param filePath   filePath
      * @param privateKey privateKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String signFile(String filePath, PrivateKey privateKey) throws Exception {
@@ -380,7 +380,7 @@ public class RSAUtils {
      * @param file      file
      * @param signByte  signByte
      * @param publicKey publicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean verifyFileSign(File file, byte[] signByte, PublicKey publicKey) throws Exception {
@@ -402,7 +402,7 @@ public class RSAUtils {
      * @param filePath  filepath
      * @param sign      sign
      * @param publicKey publicKey
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean verifyFileSign(String filePath, String sign, PublicKey publicKey) throws Exception {

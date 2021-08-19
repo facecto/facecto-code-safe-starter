@@ -30,7 +30,7 @@ public class AESUtils {
      * @param source source
      * @param key    key
      * @param iv     iv
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String encrypt(String source, String key, String iv) throws Exception {
@@ -50,7 +50,7 @@ public class AESUtils {
      * @param data encrypt data
      * @param key  key
      * @param iv   iv
-     * @return
+     * @return result
      * @throws Exception
      */
     public static String decrypt(String data, String key, String iv) throws Exception {

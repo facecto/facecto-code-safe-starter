@@ -14,7 +14,7 @@ public class ByteHexUtils {
      * HexString 2 byte[]
      *
      * @param hexString
-     * @return
+     * @return result
      */
     public static byte[] getByteFromHexString(String hexString) {
         return DatatypeConverter.parseHexBinary(hexString);
@@ -24,7 +24,7 @@ public class ByteHexUtils {
      * BASE64 String 2 byte[]
      *
      * @param base64String
-     * @return
+     * @return result
      */
     public static byte[] getByteFromBase64String(String base64String) {
         return DatatypeConverter.parseBase64Binary(base64String);
@@ -35,7 +35,7 @@ public class ByteHexUtils {
      * byte[] 2 HexString
      *
      * @param sourceByte
-     * @return
+     * @return result
      */
     public static String getHexString(byte[] sourceByte) {
         return DatatypeConverter.printHexBinary(sourceByte);
@@ -45,7 +45,7 @@ public class ByteHexUtils {
      * byte[] 2 BASE64 String
      *
      * @param sourceByte
-     * @return
+     * @return result
      */
     public static String getBase64tring(byte[] sourceByte) {
         return DatatypeConverter.printBase64Binary(sourceByte);

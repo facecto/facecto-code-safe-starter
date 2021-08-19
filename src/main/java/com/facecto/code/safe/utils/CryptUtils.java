@@ -34,7 +34,7 @@ public class CryptUtils {
      * @param map
      * @param key
      * @param iv
-     * @return
+     * @return result
      * @throws Exception
      */
     private static String encrypt2String(Map<String, Object> map, String key, String iv) throws Exception {
@@ -51,7 +51,7 @@ public class CryptUtils {
      * @param data
      * @param key
      * @param iv
-     * @return
+     * @return result
      * @throws Exception
      */
     private static Map<String, Object> decryptString2Map(String data, String key, String iv) throws Exception {
@@ -67,7 +67,7 @@ public class CryptUtils {
      * @param result
      * @param key
      * @param iv
-     * @return
+     * @return result
      * @throws Exception
      */
     public static CodeResult decryptData(SafeResult result, String key, String iv) throws Exception {
@@ -87,7 +87,7 @@ public class CryptUtils {
      * @param key
      * @param iv
      * @param secret
-     * @return
+     * @return result
      * @throws Exception
      */
     public static SafeResult encryptData(CodeResult result, String key, String iv, String secret) throws Exception {
@@ -111,7 +111,7 @@ public class CryptUtils {
      *
      * @param data
      * @param secret
-     * @return
+     * @return result
      * @throws NoSuchAlgorithmException
      */
     public static String sign(Map<String, Object> data, String secret) throws NoSuchAlgorithmException {
@@ -139,7 +139,7 @@ public class CryptUtils {
      * @param data
      * @param key
      * @param iv
-     * @return
+     * @return result
      * @throws Exception
      */
     public static boolean signVerify(String sign, String data, String key, String iv) throws Exception {
@@ -151,7 +151,7 @@ public class CryptUtils {
      * get sha1
      *
      * @param txt
-     * @return
+     * @return result
      * @throws NoSuchAlgorithmException
      */
     public static String getSha(String txt) throws NoSuchAlgorithmException {
@@ -165,7 +165,7 @@ public class CryptUtils {
      * get md5
      *
      * @param txt
-     * @return
+     * @return result
      * @throws NoSuchAlgorithmException
      */
     public static String getMd5(String txt) throws NoSuchAlgorithmException {
