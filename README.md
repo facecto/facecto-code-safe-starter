@@ -9,7 +9,7 @@ Return the encrypted data to the http client.
 <dependency>
   <groupId>com.facecto.code</groupId>
   <artifactId>facecto-code-safe-starter</artifactId>
-  <version>1.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 ## Setp 2: setting application.yaml
