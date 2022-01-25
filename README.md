@@ -4,15 +4,16 @@ Receive encrypted http request data and decrypt and submit business processing.
 Return the encrypted data to the http client.
 
 # Quick Start
-## Step 1: setting the pom.xml add dependency 
+## Step 0: setting the pom.xml add dependency 
 ```
 <dependency>
   <groupId>com.facecto.code</groupId>
   <artifactId>facecto-code-safe-starter</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```
-## Setp 2: setting application.yaml
+
+## Setp 1: setting application.yaml
 ```
 app:
   safe:
@@ -23,6 +24,35 @@ app:
     secret: String format. The secret of symmetric encryption. The length is 32 bits. example: "1829b4abbba0794301a075fc2283d2ba"    
     pri-key: String format. If has-rsa is true, this value must be configured. It represents the private key string of asymmetric encryption used by the system. example: "MIIEvQIBADANBgkqh...."
 ```
+
+## Step 2: add @EnableCodeSafe in SpringBoot Application
+Like this:
+```java
+@SpringBootApplication
+@EnableCodeSafe
+public class TestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TestApplication.class, args);
+    }
+
+}
+```
+Of course you can also use
+```java
+@SpringBootApplication
+@ComponentScan({"com.facecto.code.safe","com..."})
+public class TestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TestApplication.class, args);
+    }
+
+}
+```
+
+The @EnableCodeSafe annotation is recommended. Here's the answer: who ask me why it doesn't work.
+
 ## Step 3: Use @Encrypt annotation before the method that needs encryption
 example:
 ```

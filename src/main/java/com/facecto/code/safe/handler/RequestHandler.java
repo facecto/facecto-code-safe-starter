@@ -54,10 +54,12 @@ public class RequestHandler extends RequestBodyAdviceAdapter {
 
             final ByteArrayInputStream stream = new ByteArrayInputStream(jsonString.getBytes(StandardCharsets.UTF_8));
             return new HttpInputMessage() {
+                @Override
                 public InputStream getBody() throws IOException {
                     return stream;
                 }
 
+                @Override
                 public HttpHeaders getHeaders() {
                     return inputMessage.getHeaders();
                 }
