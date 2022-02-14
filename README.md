@@ -9,7 +9,7 @@ Return the encrypted data to the http client.
 <dependency>
   <groupId>com.facecto.code</groupId>
   <artifactId>facecto-code-safe-starter</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
 </dependency>
 ```
 
