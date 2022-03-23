@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  * SafeResult
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
@@ -20,10 +21,11 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
-     * @param code code
+     *
+     * @param code    code
      * @param message message
-     * @param sign sign
-     * @param data data
+     * @param sign    sign
+     * @param data    data
      */
     public SafeResult(Integer code, String message, String sign, String data) {
         this.code = 0;
@@ -34,6 +36,7 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
+     *
      * @return SafeResult
      */
     public static SafeResult error() {
@@ -42,6 +45,7 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
+     *
      * @param code code
      * @return SafeResult
      */
@@ -51,7 +55,8 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
-     * @param code code
+     *
+     * @param code    code
      * @param message message
      * @return SafeResult
      */
@@ -61,6 +66,7 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
+     *
      * @param sign sign
      * @param data data
      * @return SafeResult
@@ -71,8 +77,9 @@ public class SafeResult implements Serializable {
 
     /**
      * SafeResult
-     * @param sign sign
-     * @param data data
+     *
+     * @param sign    sign
+     * @param data    data
      * @param message message
      * @return SafeResult
      */

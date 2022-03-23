@@ -7,6 +7,7 @@ import java.lang.annotation.*;
 
 /**
  * Annotation EnableCodeSafe
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.1 (2022/01/01)
  */

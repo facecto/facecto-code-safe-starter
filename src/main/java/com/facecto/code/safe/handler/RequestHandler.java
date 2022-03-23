@@ -6,7 +6,6 @@ import com.facecto.code.safe.SafeResult;
 import com.facecto.code.safe.annotation.Decrypt;
 import com.facecto.code.safe.config.SafeConfig;
 import com.facecto.code.safe.properties.SafeProperties;
-import com.facecto.code.safe.utils.AESUtils;
 import com.facecto.code.safe.utils.CryptUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -25,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * RequestHandler
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */

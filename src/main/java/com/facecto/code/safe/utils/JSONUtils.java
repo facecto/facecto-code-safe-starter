@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * JSONUtils
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
@@ -17,7 +18,9 @@ public class JSONUtils {
             Object object = JSON.parse(jsonStr);
             if (object instanceof JSONObject) {
                 return true;
-            } else return object instanceof JSONArray;
+            } else {
+                return object instanceof JSONArray;
+            }
         } catch (Exception e) {
             log.info("the target is not json object!");
         }

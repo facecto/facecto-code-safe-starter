@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * SafeProperties
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
@@ -28,44 +29,44 @@ public class SafeProperties {
         return hasRsa;
     }
 
+    public void setHasRsa(boolean value) {
+        this.hasRsa = value;
+    }
+
     public boolean getHasDynamic() {
         return hasDynamic;
-    }
-
-    public String getPriKey() {
-        return priKey;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public String getIv() {
-        return iv;
-    }
-
-    public String getSecret() {
-        return secret;
     }
 
     public void setHasDynamic(Boolean value) {
         this.hasDynamic = value;
     }
 
+    public String getPriKey() {
+        return priKey;
+    }
+
     public void setPriKey(String value) {
         this.priKey = value;
     }
 
-    public void setHasRsa(boolean value) {
-        this.hasRsa = value;
+    public String getKey() {
+        return key;
     }
 
     public void setKey(String value) {
         this.key = value;
     }
 
+    public String getIv() {
+        return iv;
+    }
+
     public void setIv(String value) {
         this.iv = value;
+    }
+
+    public String getSecret() {
+        return secret;
     }
 
     public void setSecret(String value) {

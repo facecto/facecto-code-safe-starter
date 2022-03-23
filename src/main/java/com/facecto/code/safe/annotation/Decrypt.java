@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation Decrypt
+ *
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
