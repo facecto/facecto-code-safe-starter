@@ -5,8 +5,7 @@ import com.facecto.code.base.CodeResult;
 import com.facecto.code.safe.SafeResult;
 import com.facecto.code.safe.annotation.Decrypt;
 import com.facecto.code.safe.config.SafeConfig;
-import com.facecto.code.safe.properties.SafeProperties;
-import com.facecto.code.safe.utils.CryptUtils;
+import com.facecto.code.safe.utils.CodeCryptUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.MethodParameter;
@@ -28,12 +27,11 @@ import java.nio.charset.StandardCharsets;
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
-@EnableConfigurationProperties(SafeProperties.class)
 @ControllerAdvice
 public class RequestHandler extends RequestBodyAdviceAdapter {
 
     @Autowired
-    SafeConfig safeConfig;
+    SafeConfig.CodeSafe codeSafe;
 
     @Override
     public boolean supports(MethodParameter methodParameter, Type type, Class<? extends HttpMessageConverter<?>> aClass) {
@@ -45,11 +43,11 @@ public class RequestHandler extends RequestBodyAdviceAdapter {
         byte[] body = new byte[inputMessage.getBody().available()];
         inputMessage.getBody().read(body);
         try {
-            String key = safeConfig.getKey();
-            String iv = safeConfig.getIv();
+            String key = codeSafe.getKey();
+            String iv = codeSafe.getIv();
 
             SafeResult safeResult = JSONObject.parseObject(new String(body), SafeResult.class);
-            CodeResult codeResult = CryptUtils.decryptData(safeResult, key, iv);
+            CodeResult codeResult = CodeCryptUtils.decryptData(safeResult, key, iv);
             String jsonString = JSONObject.toJSONString(codeResult.getData());
 
             final ByteArrayInputStream stream = new ByteArrayInputStream(jsonString.getBytes(StandardCharsets.UTF_8));

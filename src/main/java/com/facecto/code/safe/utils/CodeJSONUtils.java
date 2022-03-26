@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version v1.1.0 (2021/8/08)
  */
 @Slf4j
-public class JSONUtils {
+public class CodeJSONUtils {
     public static boolean hasJsonString(String jsonStr) {
         try {
             Object object = JSON.parse(jsonStr);

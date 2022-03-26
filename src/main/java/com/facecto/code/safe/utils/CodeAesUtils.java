@@ -16,7 +16,7 @@ import java.security.spec.AlgorithmParameterSpec;
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
-public class AESUtils {
+public class CodeAesUtils {
 
     private static final String AES_NAME = "AES";
     private static final String ALGORITHM = "AES/CTR/NoPadding";

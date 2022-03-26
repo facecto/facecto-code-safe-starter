@@ -3,13 +3,16 @@ A http interface encryption and decryption component.
 Receive encrypted http request data and decrypt and submit business processing.
 Return the encrypted data to the http client.
 
+Notice: The has-dynamic parameter has been removed since 1.1.4, and the Redis dependency has been removed accordingly.
+
+
 # Quick Start
 ## Step 0: setting the pom.xml add dependency 
 ```
 <dependency>
   <groupId>com.facecto.code</groupId>
   <artifactId>facecto-code-safe-starter</artifactId>
-  <version>1.1.2</version>
+  <version>1.1.4</version>
 </dependency>
 ```
 
@@ -18,7 +21,6 @@ Return the encrypted data to the http client.
 app:
   safe:
     has-rsa: true|false. Boolean. If it is true, it means that the configured IV, KEY, and SECRET have been encrypted with asymmetric public key. The pri-key asymmetric private key string must be configured.
-    has-dynamic: true|false. Boolean, if it is true, it means that the configured IV, KEY, and SECRET will be read from redis, please configure spring redis. And make sure that the IV, KEY, and SECRET have been stored in redis.
     iv: String format. Symmetrically encrypted IV. The length is 16 bits. example: "1234567890123456"
     key: String format. The key of symmetric encryption. The length is 32 bits. example: "01234567891234560123456789123456"
     secret: String format. The secret of symmetric encryption. The length is 32 bits. example: "1829b4abbba0794301a075fc2283d2ba"    
@@ -118,4 +120,4 @@ Warning: For data security, please do not use the default key pair.
 https://facecto.com
 
 # Document update time
-2020-02-14
+2020-03-27

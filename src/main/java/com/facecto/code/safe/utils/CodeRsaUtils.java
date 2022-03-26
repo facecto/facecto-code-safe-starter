@@ -20,7 +20,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
-public class RSAUtils {
+public class CodeRsaUtils {
     static int keySize = 2048;
     static String algorithm = "Sha1WithRSA";
     static String RSA = "RSA";

@@ -86,4 +86,17 @@ public class SafeResult implements Serializable {
     public static SafeResult ok(String sign, String data, String message) {
         return new SafeResult(0, message, sign, data);
     }
+
+    /**
+     * SafeResult
+     *
+     * @param sign    sign
+     * @param data    data
+     * @param message message
+     * @param code    code
+     * @return SafeResult
+     */
+    public static SafeResult ok(String sign, String data, String message, Integer code) {
+        return new SafeResult(code, message, sign, data);
+    }
 }

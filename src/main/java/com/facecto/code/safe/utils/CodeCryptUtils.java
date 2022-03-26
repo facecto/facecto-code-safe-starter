@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static com.facecto.code.safe.utils.JSONUtils.hasJsonString;
+import static com.facecto.code.safe.utils.CodeJSONUtils.hasJsonString;
 
 
 /**
@@ -23,7 +23,7 @@ import static com.facecto.code.safe.utils.JSONUtils.hasJsonString;
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
-public class CryptUtils {
+public class CodeCryptUtils {
 
     /**
      * encrypt map 2 string
@@ -37,7 +37,7 @@ public class CryptUtils {
     private static String encrypt2String(Map<String, Object> map, String key, String iv) throws Exception {
         String jsonString = JSONObject.toJSONString(map);
         if (!StringUtils.isEmpty(jsonString)) {
-            return AESUtils.encrypt(jsonString, key, iv);
+            return CodeAesUtils.encrypt(jsonString, key, iv);
         }
         return null;
     }
@@ -52,7 +52,7 @@ public class CryptUtils {
      * @throws Exception
      */
     private static Map<String, Object> decryptString2Map(String data, String key, String iv) throws Exception {
-        String jsonString = AESUtils.decrypt(data, key, iv);
+        String jsonString = CodeAesUtils.decrypt(data, key, iv);
         JSONObject jsonObject = JSON.parseObject(jsonString);
         Map<String, Object> map = JSONObject.toJavaObject(jsonObject, Map.class);
         return map;

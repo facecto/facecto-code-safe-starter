@@ -1,10 +1,10 @@
 package com.facecto.code.safe.config;
 
-import com.facecto.code.safe.properties.SafeProperties;
-import com.facecto.code.safe.utils.RSAUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import com.facecto.code.safe.utils.CodeRsaUtils;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.security.PrivateKey;
@@ -16,79 +16,54 @@ import java.security.PrivateKey;
  * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
+@Configuration
 @Component
 public class SafeConfig {
-    @Autowired
-    SafeProperties safeProperties;
-    @Autowired
-    RedisTemplate redisTemplate;
 
-    String privateKeyString;
-    String iv;
-    String key;
-    String secret;
-
-    public Boolean getHasRsa() {
-        return safeProperties.getHasRsa();
+    @Bean
+    @ConfigurationProperties(prefix = "app.safe")
+    public CodeSafe codeSafe() {
+        return new CodeSafe();
     }
 
-    public Boolean getHasDynamic() {
-        return safeProperties.getHasDynamic();
-    }
+    @Setter
+    public static class CodeSafe {
+        private String key;
+        private String iv;
+        private String secret;
+        private String privateKey;
+        private boolean hasRsa;
 
-    public PrivateKey getPrivateKey() throws Exception {
-        privateKeyString = safeProperties.getPriKey();
-        if (getHasDynamic()) {
-            String tmp = (String) redisTemplate.opsForValue().get("pri-key");
-            if (StringUtils.isNotEmpty(tmp)) {
-                privateKeyString = tmp;
+        public Boolean getHasRsa() {
+            return this.hasRsa;
+        }
+
+        public PrivateKey getPrivateKey() throws Exception {
+            return CodeRsaUtils.getPrivateKey(this.privateKey);
+        }
+
+        public String getIv() throws Exception {
+            if (!getHasRsa()) {
+                return this.iv;
+            } else {
+                return CodeRsaUtils.decrypt(this.iv, getPrivateKey());
             }
         }
-        return RSAUtils.getPrivateKey(privateKeyString);
-    }
 
-    public String getIv() throws Exception {
-        iv = safeProperties.getIv();
-        if (getHasDynamic()) {
-            String tmp = (String) redisTemplate.opsForValue().get("iv");
-            if (StringUtils.isNotEmpty(tmp)) {
-                iv = tmp;
+        public String getKey() throws Exception {
+            if (!getHasRsa()) {
+                return this.key;
+            } else {
+                return CodeRsaUtils.decrypt(this.key, getPrivateKey());
             }
         }
-        if (!getHasRsa()) {
-            return iv;
-        } else {
-            return RSAUtils.decrypt(iv, getPrivateKey());
-        }
-    }
 
-    public String getKey() throws Exception {
-        key = safeProperties.getKey();
-        if (getHasDynamic()) {
-            String tmp = (String) redisTemplate.opsForValue().get("key");
-            if (StringUtils.isNotEmpty(tmp)) {
-                key = tmp;
+        public String getSecret() throws Exception {
+            if (!getHasRsa()) {
+                return this.secret;
+            } else {
+                return CodeRsaUtils.decrypt(this.secret, getPrivateKey());
             }
-        }
-        if (!getHasRsa()) {
-            return key;
-        } else {
-            return RSAUtils.decrypt(key, getPrivateKey());
-        }
-    }
-
-    public String getSecret() throws Exception {
-        secret = safeProperties.getSecret();
-        if (getHasDynamic()) {
-            String tmp = (String) redisTemplate.opsForValue().get("secret");
-            if (StringUtils.isNotEmpty(tmp)) {
-                secret = tmp;
-            }
-        }
-        if (!getHasRsa()) {
-            return secret;
-        } else {
-            return RSAUtils.decrypt(secret, getPrivateKey());
         }
     }
 }
