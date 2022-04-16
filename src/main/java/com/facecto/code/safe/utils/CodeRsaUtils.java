@@ -2,7 +2,11 @@ package com.facecto.code.safe.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.security.cert.X509Certificate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -17,13 +21,14 @@ import java.security.spec.X509EncodedKeySpec;
 /**
  * RSAUtils
  *
- * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @author Jon So, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
 public class CodeRsaUtils {
-    static int keySize = 2048;
-    static String algorithm = "Sha1WithRSA";
-    static String RSA = "RSA";
+    private static final int KEY_SIZE = 2048;
+    private static final String ALGORITHM_SHA1_RSA = "Sha1WithRSA";
+    private static final String ALGORITHM_OAEP_SHA = "RSA/ECB/OAEPWithSHA-1AndMGF1Padding";
+    private static final String RSA = "RSA";
 
     /**
      * create keyPair
@@ -34,7 +39,7 @@ public class CodeRsaUtils {
     public static KeyPair getKeyPair() throws Exception {
         KeyPairGenerator keyPairGenerator;
         keyPairGenerator = KeyPairGenerator.getInstance(RSA);
-        keyPairGenerator.initialize(keySize);
+        keyPairGenerator.initialize(KEY_SIZE);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         return keyPair;
     }
@@ -192,6 +197,56 @@ public class CodeRsaUtils {
         return Base64.encodeBase64String(result);
     }
 
+    /**
+     * encode with x509
+     *
+     * @param source      source
+     * @param certificate x509
+     * @return result
+     * @throws IllegalBlockSizeException
+     */
+    public static String encryptOAEP(String source, X509Certificate certificate) throws IllegalBlockSizeException {
+        try {
+            Cipher cipher = Cipher.getInstance(ALGORITHM_OAEP_SHA);
+            cipher.init(Cipher.ENCRYPT_MODE, certificate.getPublicKey());
+            byte[] data = source.getBytes(StandardCharsets.UTF_8);
+            byte[] ciphertext = cipher.doFinal(data);
+            return java.util.Base64.getEncoder().encodeToString(ciphertext);
+
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            throw new RuntimeException("The current Java environment does not support RSA v1.5/OAEP", e);
+        } catch (InvalidKeyException e) {
+            throw new IllegalArgumentException("Invalid certificates", e);
+        } catch (IllegalBlockSizeException | BadPaddingException e) {
+            throw new IllegalBlockSizeException("The length of the original encrypted string cannot exceed 214 bytes");
+        }
+    }
+
+
+    /**
+     * decrypt by privatekey
+     *
+     * @param encString  encString
+     * @param privateKey privateKey
+     * @return result
+     * @throws BadPaddingException
+     */
+    public static String decryptOAEP(String encString, PrivateKey privateKey) throws BadPaddingException {
+        try {
+            Cipher cipher = Cipher.getInstance(ALGORITHM_OAEP_SHA);
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+            byte[] data = java.util.Base64.getDecoder().decode(encString);
+            return new String(cipher.doFinal(data), StandardCharsets.UTF_8);
+
+        } catch (NoSuchPaddingException | NoSuchAlgorithmException e) {
+            throw new RuntimeException("The current Java environment does not support RSA v1.5/OAEP", e);
+        } catch (InvalidKeyException e) {
+            throw new IllegalArgumentException("Invalid private key.", e);
+        } catch (BadPaddingException | IllegalBlockSizeException e) {
+            throw new BadPaddingException("Failed to decrypt");
+        }
+    }
+
 
     /**
      * decrypt by privateKey
@@ -291,7 +346,7 @@ public class CodeRsaUtils {
      * @throws Exception
      */
     public static byte[] signByte(String source, PrivateKey privateKey) throws Exception {
-        Signature sign = Signature.getInstance(algorithm);
+        Signature sign = Signature.getInstance(ALGORITHM_SHA1_RSA);
         sign.initSign(privateKey);
         sign.update(source.getBytes(StandardCharsets.UTF_8));
         return sign.sign();
@@ -334,7 +389,7 @@ public class CodeRsaUtils {
      * @throws Exception
      */
     public static boolean verifySign(byte[] sourceByte, byte[] signByte, PublicKey publicKey) throws Exception {
-        Signature sign = Signature.getInstance(algorithm);
+        Signature sign = Signature.getInstance(ALGORITHM_SHA1_RSA);
         sign.initVerify(publicKey);
         sign.update(sourceByte);
         return sign.verify(signByte);
@@ -349,7 +404,7 @@ public class CodeRsaUtils {
      * @throws Exception
      */
     public static byte[] signFileByte(File file, PrivateKey privateKey) throws Exception {
-        Signature sign = Signature.getInstance(algorithm);
+        Signature sign = Signature.getInstance(ALGORITHM_SHA1_RSA);
         sign.initSign(privateKey);
         try (InputStream in = new FileInputStream(file)) {
             byte[] buf = new byte[1024];
@@ -385,7 +440,7 @@ public class CodeRsaUtils {
      * @throws Exception
      */
     public static boolean verifyFileSign(File file, byte[] signByte, PublicKey publicKey) throws Exception {
-        Signature sign = Signature.getInstance(algorithm);
+        Signature sign = Signature.getInstance(ALGORITHM_SHA1_RSA);
         sign.initVerify(publicKey);
         try (InputStream in = new FileInputStream(file)) {
             byte[] buf = new byte[1024];
@@ -411,5 +466,6 @@ public class CodeRsaUtils {
         File file = new File(filePath);
         return verifyFileSign(file, signByte, publicKey);
     }
+
 
 }

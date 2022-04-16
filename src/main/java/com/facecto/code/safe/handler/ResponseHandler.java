@@ -6,7 +6,6 @@ import com.facecto.code.safe.annotation.Encrypt;
 import com.facecto.code.safe.config.SafeConfig;
 import com.facecto.code.safe.utils.CodeCryptUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -18,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 /**
  * ResponseHandler
  *
- * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @author Jon So, https://facecto.com, https://github.com/facectoo
  * @version v1.1.0 (2021/8/08)
  */
 @ControllerAdvice

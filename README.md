@@ -12,7 +12,7 @@ Notice: The has-dynamic parameter has been removed since 1.1.4, and the Redis de
 <dependency>
   <groupId>com.facecto.code</groupId>
   <artifactId>facecto-code-safe-starter</artifactId>
-  <version>1.1.4</version>
+  <version>1.1.8</version>
 </dependency>
 ```
 
@@ -115,6 +115,21 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr7EzZwdUqO5K/PZpS7dhVUT6DBslpzKcAgrV
 ### private key
 in the code
 Warning: For data security, please do not use the default key pair.
+
+
+## AES EXAMPLE
+```java
+    public static void main(String[] args) throws Exception {
+        String txt = "Hello world!";
+        String key ="0123456780123456";
+        String iv ="012345678012";
+        String add ="this is additional";
+        String encrypt = encrypt(txt, key, iv, add);
+        System.out.println(encrypt);
+        String decrypt = decrypt(encrypt, key, iv, add);
+        System.out.println(decrypt);
+    }
+```
 
 # About facecto.com
 https://facecto.com

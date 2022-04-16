@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Annotation Encrypt
  *
- * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @author Jon So, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
 @Retention(RetentionPolicy.RUNTIME)

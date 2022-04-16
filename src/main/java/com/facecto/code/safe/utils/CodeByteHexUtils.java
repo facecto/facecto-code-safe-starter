@@ -5,7 +5,7 @@ import javax.xml.bind.DatatypeConverter;
 /**
  * ByteHexUtils
  *
- * @author Jon So, https://cto.pub, https://facecto.com, https://github.com/facecto
+ * @author Jon So, https://facecto.com, https://github.com/facecto
  * @version v1.1.0 (2021/8/08)
  */
 public class CodeByteHexUtils {
